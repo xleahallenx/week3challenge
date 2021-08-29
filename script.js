@@ -12,7 +12,9 @@
   // set textArea value to be random password
 
 // Get references to the #generate element
-const generateBtn = document.querySelector("#generate");
+//const generateBtn = document.querySelector("#generate");
+//generateBtn.addEventListener("click", writePassword);
+
 let possibleCharacters = ""
 const lowerCharacters = "qwertyuiopasdfghjklzxcvbnm"
 const upperCharacters = "ASDFGHJKLQWERTYUIOPZXCVBNM"
@@ -22,22 +24,72 @@ const lowerConfirm = confirm("Would you like to use lower case letters in your p
 const upperConfirm = confirm("Would you like to use upper case letters in your password?")
 const specialConfirm = confirm("Would you like to use symbols in your password?")
 const integersConfirm = confirm("Would you like to use numbers in your password?")
+const characterAmount = window.prompt("How many characters would you like in your password?")
 
+const randomFunc = {
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  special: getRandomSpecial,
+  integer: getRandomInteger
+};
 
-if(lowerConfirm == true){
+//functions
+function getRandomLower() {
+  return String.lowerCharacters(Math.floor(Math.random()));
+  if(lowerConfirm == true){
   possibleCharacters += lowerCharacters 
 }
-if(upperConfirm == true) {
-possibleCharacters += upperCharacters
 }
-  
-if(specialConfirm == true) {
+
+function getRandomUpper() {
+  return String.upperCharacters(Math.floor(Math.random()));
+  if(upperConfirm == true) {
+    possibleCharacters += upperCharacters
+    }
+}
+
+function getRandomSpecial() {
+  return String.specialCharacters(Math.floor(Math.random()));
+  if(specialConfirm == true) {
   possibleCharacters += specialCharacters
 }
-if(integersConfirm == true) {
+}
+
+function getRandomInteger() {
+  return String.integer(Math.floor(Math.random()));
+  if(integersConfirm == true) {
   possibleCharacters += integers
 }
-// 
+}
+
+//if(lowerConfirm == true){
+  //possibleCharacters += lowerCharacters 
+//}
+//if(upperConfirm == true) {
+//possibleCharacters += upperCharacters
+//}
+  
+//if(specialConfirm == true) {
+  //possibleCharacters += specialCharacters
+//}
+//if(integersConfirm == true) {
+  //possibleCharacters += integers
+//}
+
+//function generatePassword() {
+//const password = generatePassword();
+//const passwordText = document.querySelector("#password");
+
+//passwordText.value = password;
+
+
+//$: password = generatePassword (
+  //characterAmount,
+  //lowerCharacters,
+  //upperCharacters,
+  //specialCharacters,
+  //integers
+//);
 // possibleCharacters += lowerCharacters, upperCharacters, specialCharacters, integers()
 //console.log(possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)])
 //const generatePassword = (length, possibleCharacters)
@@ -49,20 +101,15 @@ if(integersConfirm == true) {
   //}
 
 
-function generatePassword () {
+//function generatePassword () {
 
-  return password
-}
+  //console.log(password);
+  //return password;
+//}
 
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//generateBtn.addEventListener("click", writePassword);
