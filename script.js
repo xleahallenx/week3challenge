@@ -15,6 +15,7 @@
 //const generateBtn = document.querySelector("#generate");
 //generateBtn.addEventListener("click", writePassword);
 
+const generateBtn = document.querySelector("#generate");
 let possibleCharacters = ""
 const lowerCharacters = "qwertyuiopasdfghjklzxcvbnm"
 const upperCharacters = "ASDFGHJKLQWERTYUIOPZXCVBNM"
@@ -26,6 +27,11 @@ const specialConfirm = confirm("Would you like to use symbols in your password?"
 const integersConfirm = confirm("Would you like to use numbers in your password?")
 const characterAmount = window.prompt("How many characters would you like in your password?")
 
+const myTextArea = document.querySelector("#textarea");
+const resultEl = document.querySelector('#result');
+const generateEl = document.querySelector('#generate');
+
+
 const randomFunc = {
   lower: getRandomLower,
   upper: getRandomUpper,
@@ -33,34 +39,70 @@ const randomFunc = {
   integer: getRandomInteger
 };
 
+generateEl.addEventListener("click", () => {
+  const numberofCharacters = +characterAmount.valueOf;
+  const hasLower = lowerConfirm.true;
+  const hasUpper = upperConfirm.true;
+  const hasSpecial = specialConfirm.true;
+  const hasInteger = integers.true;
+
+  
+
+  resultEl.mytextArea = generatedPassword(
+    hasLower, 
+    hasUpper, 
+    hasInteger, 
+    hasSpecial, 
+    numberofCharacters);
+
+
+});
+
+function generatedPassword(lower, upper, integer, special, numberofCharacters) {
+
+  let generatedPassword = '';
+  const typesCount = lower + upper + special + integer;
+
+  for(let i = 0; i < length; i += typesCount) {
+    const funcName = Object.keys(type) [0];
+
+    generatedPassword =+ randomFunc[funcName] ();
+  };
+
+const finalPassword = generatedPassword.slice(0,characterAmount); 
+
+return finalPassword;
+
+}
+
 //functions
 function getRandomLower() {
   return String.lowerCharacters(Math.floor(Math.random()));
   if(lowerConfirm == true){
   possibleCharacters += lowerCharacters 
 }
-}
+};
 
 function getRandomUpper() {
   return String.upperCharacters(Math.floor(Math.random()));
   if(upperConfirm == true) {
     possibleCharacters += upperCharacters
-    }
 }
+};
 
 function getRandomSpecial() {
   return String.specialCharacters(Math.floor(Math.random()));
   if(specialConfirm == true) {
   possibleCharacters += specialCharacters
 }
-}
+};
 
 function getRandomInteger() {
   return String.integer(Math.floor(Math.random()));
   if(integersConfirm == true) {
   possibleCharacters += integers
 }
-}
+};
 
 //if(lowerConfirm == true){
   //possibleCharacters += lowerCharacters 
