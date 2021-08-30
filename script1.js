@@ -1,5 +1,11 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
+const generatePassword = document.querySelector("#textArea");
+
+function generatePassword() {
+    
+}
+
 
 // Write password to the #password input
 function writePassword() {
@@ -76,3 +82,5 @@ for(let i= 0; i < characterAmount; i++) {
 finalPassword = finalPassword+char;
 }
 window.alert(finalPassword)
+
+generateBtn.addEventListener("click", generatePassword);
