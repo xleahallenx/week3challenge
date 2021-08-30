@@ -15,7 +15,7 @@
 //const generateBtn = document.querySelector("#generate");
 //generateBtn.addEventListener("click", writePassword);
 
-const generateBtn = document.querySelector("#generate");
+
 let possibleCharacters = ""
 const lowerCharacters = "qwertyuiopasdfghjklzxcvbnm"
 const upperCharacters = "ASDFGHJKLQWERTYUIOPZXCVBNM"
@@ -29,7 +29,8 @@ const characterAmount = window.prompt("How many characters would you like in you
 
 const myTextArea = document.querySelector("#textarea");
 const resultEl = document.querySelector('#result');
-const generateEl = document.querySelector('#generate');
+//const generateEl = document.querySelector('#generate');
+const generateBtn = document.querySelector("#generate");
 
 
 const randomFunc = {
@@ -39,16 +40,17 @@ const randomFunc = {
   integer: getRandomInteger
 };
 
-generateEl.addEventListener("click", () => {
+
+generateBtn.addEventListener("click", () => {
   const numberofCharacters = +characterAmount.valueOf;
   const hasLower = lowerConfirm.true;
   const hasUpper = upperConfirm.true;
   const hasSpecial = specialConfirm.true;
   const hasInteger = integers.true;
 
-  
+ 
 
-  resultEl.mytextArea = generatedPassword(
+  resultEl.textContent = generatedPassword(
     hasLower, 
     hasUpper, 
     hasInteger, 
@@ -76,6 +78,7 @@ return finalPassword;
 }
 
 //functions
+
 function getRandomLower() {
   return String.lowerCharacters(Math.floor(Math.random()));
   if(lowerConfirm == true){
