@@ -1,11 +1,24 @@
+// Assignment Code
 const generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", finalPassword);
+
+// Write password to the #password input
+function writePassword() {
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 
 const lowerConfirm = confirm("Would you like to use lower case letters in your password?")
 const upperConfirm = confirm("Would you like to use upper case letters in your password?")
 const specialConfirm = confirm("Would you like to use symbols in your password?")
 const integersConfirm = confirm("Would you like to use numbers in your password?")
-const characterAmount = window.prompt("How many characters would you like in your password?")
+const characterAmount = window.prompt("Enter number of characters you'd like in your password between 8 - 120.")
 
 let myFunctionsArray = [];
 if(lowerConfirm) {
