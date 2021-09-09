@@ -81,28 +81,28 @@ return finalPassword;
 
 function getRandomLower() {
   return String.lowerCharacters(Math.floor(Math.random()));
-  if(lowerConfirm == true){
+  if(lowerConfirm === true){
   possibleCharacters += lowerCharacters 
 }
 };
 
 function getRandomUpper() {
   return String.upperCharacters(Math.floor(Math.random()));
-  if(upperConfirm == true) {
+  if(upperConfirm === true) {
     possibleCharacters += upperCharacters
 }
 };
 
 function getRandomSpecial() {
   return String.specialCharacters(Math.floor(Math.random()));
-  if(specialConfirm == true) {
+  if(specialConfirm === true) {
   possibleCharacters += specialCharacters
 }
 };
 
 function getRandomInteger() {
   return String.integer(Math.floor(Math.random()));
-  if(integersConfirm == true) {
+  if(integersConfirm === true) {
   possibleCharacters += integers
 }
 };

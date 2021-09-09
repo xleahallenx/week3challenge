@@ -1,53 +1,54 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
-const generatePassword = document.querySelector("#textArea");
+const generatedPassword = document.querySelector("#textArea");
+let myFunctionsArray = [];
 
 function generatePassword() {
-    
-}
+    const lowerConfirm = confirm("Would you like to use lower case letters in your password?")
+    const upperConfirm = confirm("Would you like to use upper case letters in your password?")
+    const specialConfirm = confirm("Would you like to use symbols in your password?")
+    const integersConfirm = confirm("Would you like to use numbers in your password?")
+    const characterAmount = window.prompt("Enter number of characters you'd like in your password between 8 - 120.")
 
+    if (lowerConfirm) {
+        myFunctionsArray.push(getLowerCaseCharacter);
+    }
+    if (upperConfirm) {
+        myFunctionsArray.push(getUpperCaseCharacter);
+    }
+    if (specialConfirm) {
+        myFunctionsArray.push(getSpecialCharacters);
+    }
+    if (integersConfirm) {
+        myFunctionsArray.push(getIntegers);
+    }
+
+    let finalPassword = '';
+    for (let i = 0; i < characterAmount; i++) {
+        const char = getPasswordCharacter();
+        finalPassword = finalPassword + char;
+    }
+    return finalPassword
+}
 
 // Write password to the #password input
 function writePassword() {
-  const password = generatePassword();
-  const passwordText = document.querySelector("#password");
+    const password = generatePassword();
+    const passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+    passwordText.value = password;
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 
-const lowerConfirm = confirm("Would you like to use lower case letters in your password?")
-const upperConfirm = confirm("Would you like to use upper case letters in your password?")
-const specialConfirm = confirm("Would you like to use symbols in your password?")
-const integersConfirm = confirm("Would you like to use numbers in your password?")
-const characterAmount = window.prompt("Enter number of characters you'd like in your password between 8 - 120.")
-
-let myFunctionsArray = [];
-if(lowerConfirm) {
-    myFunctionsArray.push(getLowerCaseCharacter);
-}
-if(upperConfirm) {
-    myFunctionsArray.push(getUpperCaseCharacter);
-}
-if(specialConfirm) {
-    myFunctionsArray.push(getSpecialCharacters);
-}
-if(integersConfirm) {
-    myFunctionsArray.push(getIntegers);
-}
-
-
-function getRandomNumber(max){
-    const tmp = Math.random()* max;
+function getRandomNumber(max) {
+    const tmp = Math.random() * max;
     const tmpl = Math.floor(tmp);
     return tmpl;
-  }
-  
-  function getLowerCaseCharacter() {
+}
+
+function getLowerCaseCharacter() {
     const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     const tmp = getRandomNumber(arr.length);
     return arr[tmp]
@@ -76,11 +77,9 @@ function getPasswordCharacter() {
     return myFunctionsArray[tmp]();
 }
 
-let finalPassword = '';
-for(let i= 0; i < characterAmount; i++) {
-    const char = getPasswordCharacter();
-finalPassword = finalPassword+char;
-}
-window.alert(finalPassword)
 
-generateBtn.addEventListener("click", generatePassword);
+// window.alert(finalPassword)
+
+// generateBtn.addEventListener("click", generatePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
